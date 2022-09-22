@@ -10,13 +10,20 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @ComponentScan({"com"})
 @EntityScan("com")
 @EnableJpaRepositories("com")
+
+/**
+ * Starting point for guess the number
+ * @author benat
+ *
+ */
 public class App {
 
+	/**
+	 * Run the spring application
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(App.class, args);
-		
-//		System.out.println("Spring Application started\n");
-//		System.out.println("Guess the number! (a.k.a \"Bulls and Cows\")");
 	}
 
 }

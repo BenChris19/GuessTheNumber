@@ -1,7 +1,6 @@
 package com.service;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +11,11 @@ import com.dao.RoundRepository;
 import com.model.Game;
 import com.model.Round;
 
+/**
+ * Implements round service
+ * @author benat
+ *
+ */
 @Service
 public class RoundServiceImpl implements RoundService {
 
@@ -20,8 +24,10 @@ public class RoundServiceImpl implements RoundService {
 	@Autowired
 	private GameServiceImpl gameServiceImpl;
 
-	//DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-	
+	/**
+	 * Create a round
+	 * @param round
+	 */
 	@Override
 	public Round createRound(Round round) {
 		Game game = gameServiceImpl.findGame(round.getGameId());
@@ -42,6 +48,12 @@ public class RoundServiceImpl implements RoundService {
 		return roundRepository.save(round);
 	}
 
+	/**
+	 * Calculate result from user guess
+	 * @param guess
+	 * @param answer
+	 * @return
+	 */
 	public String calcResult(int guess, String answer){
 		String strguess = String.valueOf(guess);
 		String stranswer = answer;
@@ -62,6 +74,10 @@ public class RoundServiceImpl implements RoundService {
 
 		return result;
 	}
+	
+	/**
+	 * Find a certain round by id
+	 */
 	@Override
 	public List<Round> findRounds(Long id){
 		List<Round> result = new ArrayList<>();

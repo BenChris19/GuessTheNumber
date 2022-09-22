@@ -11,6 +11,11 @@ import org.springframework.stereotype.Service;
 import com.dao.GameRepository;
 import com.model.Game;
 
+/**
+ * Implementation for game service
+ * @author benat
+ *
+ */
 @Service
 public class GameServiceImpl implements GameService{
 
@@ -19,7 +24,10 @@ public class GameServiceImpl implements GameService{
 	
 	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 	Random rng = new Random();
-	
+
+	/**
+	 * Create a game
+	 */
 	@Override
 	public Game createGame() {
 		Game game = new Game();
@@ -31,6 +39,10 @@ public class GameServiceImpl implements GameService{
 		return gameRepository.save(game);
 	}
 
+	/**
+	 * Find a game by if
+	 * @param id
+	 */
 	@Override
 	public Game findGame(Long id){
 		if(gameRepository.findById(id).isPresent()){
@@ -42,6 +54,9 @@ public class GameServiceImpl implements GameService{
 		return null;
 	}
 
+	/**
+	 * List all of the games
+	 */
 	@Override
     public Iterable<Game> listGames() {
 		Iterable<Game> games = gameRepository.findAll();
@@ -52,6 +67,10 @@ public class GameServiceImpl implements GameService{
 		return games;
     }
 
+	/**
+	 * Generate a random 4 digit exclusive digit number
+	 * @return
+	 */
 	public String generateAnswer(){
 		ArrayList<Integer> nums = new ArrayList<>(Arrays.asList(0, 1, 2, 3, 4 , 5, 6, 7, 8, 9));
 		String answer = "";
@@ -70,6 +89,10 @@ public class GameServiceImpl implements GameService{
 		return answer;
 	}
 
+	/**
+	 * Game has been won, change to game finish
+	 * @param id
+	 */
 	public Game finishGame(Long id) {
 		Game game = this.findGame(id);
 		game.setFinished(true);

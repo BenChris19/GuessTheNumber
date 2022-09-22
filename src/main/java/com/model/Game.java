@@ -17,6 +17,11 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
+/**
+ * Game class, stores all the info for the games
+ * @author benat
+ *
+ */
 public class Game {
 	
 	@Id

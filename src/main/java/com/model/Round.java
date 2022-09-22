@@ -19,6 +19,11 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
+/**
+ * Store all info for rounds
+ * @author benat
+ *
+ */
 public class Round {
 	
 	@Id
